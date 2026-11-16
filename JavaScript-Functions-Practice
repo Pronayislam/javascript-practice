@@ -1,0 +1,14 @@
+function square(num){
+  
+  var result=num*num;
+  console.log("result="+result);
+} 
+//add function
+function addition(x,y){
+  var result=x+y;
+  console.log("sum="+result);
+}
+square(5);
+square(6);
+square(7);
+addition(10,20)
