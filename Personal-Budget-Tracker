@@ -1,0 +1,90 @@
+const userName = prompt("Enter your name:");
+
+const income = parseFloat(prompt("Enter your total income:"));
+
+const numberOfExpenses = parseInt(
+    prompt("How many expenses do you have?")
+);
+
+if (
+    isNaN(income) ||
+    isNaN(numberOfExpenses) ||
+    income <= 0 ||
+    numberOfExpenses < 0
+) {
+    console.log("Invalid input. Please enter valid numbers.");
+
+} else {
+
+    let totalExpenses = 0;
+
+    for (let i = 1; i <= numberOfExpenses; i++) {
+
+        let expense = parseFloat(
+            prompt(`Enter expense ${i}:`)
+        );
+
+        if (isNaN(expense) || expense < 0) {
+
+            console.log(`Invalid input for expense ${i}, setting it to $0`);
+
+            expense = 0;
+        }
+
+        totalExpenses += expense;
+    }
+
+    const tax = income * 0.1;
+
+    const netIncome = income - tax;
+
+    const balance = netIncome - totalExpenses;
+
+    const saving = balance * 0.2;
+
+    let finalStatus = '';
+
+    if (saving >= 1000) {
+
+        finalStatus = 'Excellent! Your saving is good.';
+
+    } else if (saving >= 100) {
+
+        finalStatus = 'Needs improvement';
+
+    } else {
+
+        finalStatus = 'Critical! Your saving is too low.';
+    }
+
+    let overspendingMessage = '';
+
+    if (totalExpenses > income) {
+
+        overspendingMessage =
+            'Warning: You are spending more than your income.';
+    }
+
+    console.log("Personal Budget Tracker App");
+
+    console.log(`User: ${userName}`);
+
+    console.log(`Total Income: $${income}`);
+
+    console.log(`Total Expenses: $${totalExpenses}`);
+
+    console.log(`Tax Deducted (10%): $${tax}`);
+
+    console.log(`Net Income After Tax: $${netIncome}`);
+
+    console.log(`Remaining Balance: $${balance}`);
+
+    console.log(`Savings (20% of balance): $${saving}`);
+
+    console.log(`Final Status: ${finalStatus}`);
+
+    if (overspendingMessage) {
+
+        console.log(overspendingMessage);
+    }
+}
